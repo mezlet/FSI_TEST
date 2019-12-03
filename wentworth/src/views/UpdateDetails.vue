@@ -9,22 +9,31 @@
     </p>
     <main>
       <form action="">
-        <div class="input-group">
-          <label for="verify-bvn">Verify Bvn</label>
-          <input type="text" name="verify-bvn" />
-        </div>
-        <div class="input-group">
-          <label for="fname">Date of birth</label>
-          <input type="date" />
-        </div>
+        <input-group
+          type="text"
+          name="verify-bvn"
+          text="Verify Bvn"
+          v-model="form.bvn"
+        />
+
+        <input-group
+          type="date"
+          name="dob"
+          text="Date of birth"
+          v-model="form.dob"
+        />
+
         <div class="btn-box">
           <button><span>Update</span>&rarr;</button>
         </div>
 
-        <div class="status input-group">
-          <label for="fname">Date of birth</label>
-          <input type="date" />
-        </div>
+        <input-group
+          class="status"
+          type="text"
+          name="verify-bvn"
+          text="Verify Bvn"
+          v-model="form.bvn"
+        />
       </form>
       <section class="info">
         <div class="heading">
@@ -41,13 +50,22 @@
 </template>
 
 <script>
+import InputGroup from "@/components/InputGroup";
 export default {
   name: "UpdateDetails",
+  components: {
+    InputGroup
+  },
   data: () => ({
     details: {
       "last name": "Xtermin",
       "first name": "Fadert",
       "date of birth": "12/08/2019"
+    },
+    form: {
+      bvn: "",
+      dob: "",
+      verify: ""
     }
   })
 };
@@ -73,7 +91,7 @@ main > * {
   text-align: left;
 }
 
-.status {
+.input-group.status {
   margin-top: 15rem;
 }
 
@@ -105,5 +123,15 @@ main > * {
   font-size: 2.4rem;
   text-transform: capitalize;
   margin-top: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  main > * {
+    width: 100%;
+  }
+
+  .info {
+    margin-top: 4rem;
+  }
 }
 </style>

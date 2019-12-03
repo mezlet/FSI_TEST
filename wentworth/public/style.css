@@ -29,27 +29,6 @@ p {
   color: #3D3D3D
 }
 
-.input-group {
-  border: 2px solid #080f4d;
-  padding: 1.5rem 2rem;
-  border-radius: 7px;
-  position: relative;
-  margin-top: 6rem;
-}
-
-.input-group label {
-  position: absolute;
-  top: -13px;
-  background: white;
-  padding: 0 5px;
-}
-
-.input-group input {
-  border: none;
-  outline: none;
-  font-size: 1.6rem;
-}
-
 .btn-box {
   width: 100%;
   margin-top: 6rem;

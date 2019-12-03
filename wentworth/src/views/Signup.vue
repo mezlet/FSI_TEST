@@ -6,30 +6,42 @@
       online, <br />including some of Nigeria's biggest brands
     </p>
     <form action="">
-      <div class="input-group">
-        <label for="fname">First Name</label>
-        <input type="text" />
-      </div>
-      <div class="input-group">
-        <label for="fname">Last Name</label>
-        <input type="text" />
-      </div>
-      <div class="input-group">
-        <label for="fname">Phone No</label>
-        <input type="text" />
-      </div>
-      <div class="input-group">
-        <label for="fname">Address</label>
-        <input type="text" />
-      </div>
-      <div class="input-group">
-        <label for="fname">Password</label>
-        <input type="password" />
-      </div>
-      <div class="input-group">
-        <label for="fname">Confirm Password</label>
-        <input type="password" />
-      </div>
+      <input-group
+        type="text"
+        name="fname"
+        text="First Name"
+        v-model="form.firstname"
+      />
+      <input-group
+        type="text"
+        name="lastname"
+        v-model="form.lastname"
+        text="Last Name"
+      />
+      <input-group
+        type="text"
+        name="phoneNo"
+        v-model="form.phoneNumber"
+        text="Phone Number"
+      />
+      <input-group
+        type="text"
+        name="address"
+        v-model="form.address"
+        text="Address"
+      />
+      <input-group
+        type="password"
+        name="password"
+        v-model="form.password"
+        text="Password"
+      />
+      <input-group
+        type="text"
+        name="confirm-password"
+        v-model="form.confirmPassword"
+        text="Confirm password"
+      />
       <div class="btn-box">
         <button><span>Signup</span>&rarr;</button>
       </div>
@@ -38,8 +50,23 @@
 </template>
 
 <script>
+import InputGroup from "@/components/InputGroup";
+
 export default {
-  name: "Signup"
+  name: "Signup",
+  components: {
+    InputGroup
+  },
+  data: () => ({
+    form: {
+      firstName: "Ore Somt",
+      lastName: "Ore Somt",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+      address: ""
+    }
+  })
 };
 </script>
 
