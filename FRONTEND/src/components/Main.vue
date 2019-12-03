@@ -5,9 +5,10 @@
             <div class="left">
                <div>
                    <h1>
-                       <span>Incredible app</span>
-                       <span></span>
-                       features</h1>
+                       Incredible
+                       <span class="header-blue">app</span>
+                       <span class="header-red">features</span>
+                    </h1>
                </div>
             </div>
             <div class="right">
@@ -27,6 +28,13 @@
     width: 70%;
     margin-top: 50px;
 }
+.header-blue {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 74.625px;
+    line-height: 103%;
+    color: #080F4D;
+    }
 .right{
     width: 30%
 }
