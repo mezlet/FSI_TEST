@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navbar />
-    <Main/>
+    <Main />
   </div>
 </template>
 
@@ -20,5 +20,7 @@ export default {
 </script>
 
 <style scoped>
-.home {}
+.home {
+  margin: 0 auto;
+}
 </style>

@@ -25,6 +25,8 @@
 
 <style scoped>
 .top {
+     width: 85%;
+     margin: 0 auto;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -46,7 +48,7 @@
     margin-left: 18px;
 }
 
-.navbar-nav{
+.navbar-nav {
     align-content: center;
 }
 
@@ -68,5 +70,12 @@
     line-height: 184%;
     color: #FFFFFF;
     border: none;
+}
+
+.btn:hover {
+    background: #FFFFFF;
+    border: 3px solid #080F4D;
+    color: #080F4D;
+    transition: background 500ms ease-in-out;
 }
 </style>
