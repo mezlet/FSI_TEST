@@ -4,18 +4,23 @@
                 <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
                     <i class="fa fa-bars"></i>
                 </label>
-                <a href="#" class="logo"><img src="../assets/Logo.svg" alt="logo"><span>WENTWORTHS</span></a>
+                <router-link to="/">
+                    <a href="#" class="logo"><img src="../assets/Logo.svg" alt="logo"><span>WENTWORTHS</span></a>
+                </router-link>
                 <input type="checkbox" id="chkToggle">
                 <ul class="main-nav" id="js-menu">
                 <li>
                     <a href="#" class="nav-links">ABOUT</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-links">LOGIN</a>
+                    <a href="#" class="nav-links">LOG IN</a>
                 </li>
-                <li>
+
+                <router-link to="/signup">
+                    <li>
                     <a href="#" class="nav-links"><button type="button" class="navbtn">SIGN UP</button></a>
                 </li>
+                </router-link>
                 </ul>
             </nav>
     </div>
@@ -65,8 +70,6 @@ color: #3D3D3D;
 .logo {
   display: inline-block;
   font-size: 22px;
-  margin-top: 10px;
-  margin-left: 20px;
 }
 
 .navbtn {
