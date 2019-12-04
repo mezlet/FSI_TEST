@@ -1,26 +1,28 @@
 <template>
     <div class="top">
-        <div class="nav">
-            <input type="checkbox" id="nav-check">
-            <div class="nav-header">
-                <div class="nav-title">
-                    <a href="#"><img src="../assets/Logo.svg" alt="logo"><span>WENTWORTHS</span></a>
-                </div>
-            </div>
-            <div class="nav-btn">
-                <label for="nav-check">
-                <span></span>
-                <span></span>
-                <span></span>
+        <nav class="navbar">
+                <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
+                    <i class="fa fa-bars"></i>
                 </label>
-            </div>
-            
-            <div class="nav-links">
-                <a href="#">ABOUT</a>
-                <a href="#">LOGIN</a>
-                <a href="#"><button type="button" class="navbtn">SIGN UP</button></a>
-            </div>
-        </div>
+                <router-link to="/">
+                    <a href="#" class="logo"><img src="../assets/Logo.svg" alt="logo"><span>WENTWORTHS</span></a>
+                </router-link>
+                <input type="checkbox" id="chkToggle">
+                <ul class="main-nav" id="js-menu">
+                <li>
+                    <a href="#" class="nav-links">ABOUT</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-links">LOG IN</a>
+                </li>
+
+                <router-link to="/signup">
+                    <li>
+                    <a href="#" class="nav-links"><button type="button" class="navbtn">SIGN UP</button></a>
+                </li>
+                </router-link>
+                </ul>
+            </nav>
     </div>
 </template>
 
@@ -30,56 +32,46 @@
     margin: 0 auto;
     font-family: 'Poppins', sans-serif;
 }
-.nav {
-  height: 70px;
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 3%;
+.navbar {
+  font-size: 16px;
+  margin-top: 2%;
+  padding-bottom: 10px;
 }
 
-.nav > .nav-header {
-  display: inline;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav > .nav-header > .nav-title span {
-    margin-left: 10px;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 184%;
-    color: #080F4D;
-}
-
-.nav > .nav-btn {
+.main-nav {
+  list-style-type: none;
   display: none;
 }
-
-.nav > .nav-links {
-  display: grid;
-  grid-template-columns: 0.7fr 0.7fr 0.7fr;
-  justify-content: center;
-  align-items: center;
+.logo {
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 184%;
+color: #080F4D;
 }
 
-.nav > .nav-links > a {
+.logo span {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.nav-links {
   text-decoration: none;
   font-size: 16px;
 line-height: 184%;
-    color: #3D3D3D;
+color: #3D3D3D;
 }
 
-.nav > .nav-links > a:hover {
-  text-decoration: underline;
+.main-nav li {
+  text-align: center;
+  margin: 15px auto;
 }
 
-.nav > #nav-check {
-  display: none;
+.logo {
+  display: inline-block;
+  font-size: 22px;
 }
+
 .navbtn {
     width: 189px;
     height: 58px;
@@ -100,52 +92,66 @@ line-height: 184%;
     transition: background 500ms ease-in-out;
 }
 
-@media (max-width:600px) {
-  .nav > .nav-btn {
-    display: inline-block;
-    position: absolute;
-    right: 0px;
-    top: 0px;
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: #080F4D;
+  font-size: 30px;
+}
+
+#chkToggle {
+  display: none;
+}
+
+#chkToggle:checked + ul.main-nav {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    height: 70px;
+    align-items: center;
   }
-  .nav > .nav-btn > label {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    padding: 13px;
+
+  #chkToggle:checked + ul.main-nav {
+    display: flex;
   }
-  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-    background-color: rgba(0, 0, 0, 0.3);
+
+  .main-nav {
+    display: flex;
+    display: grid;
+    grid-template-columns: 0.6fr 0.6fr 0.6fr;
+    justify-content: center;
+    align-items: center;
   }
-  .nav > .nav-btn > label > span {
-    display: block;
-    width: 25px;
-    height: 10px;
-    border-top: 2px solid #eee;
+
+  .main-nav li {
+    margin: 0;
   }
-  .nav > .nav-links {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 0px;
-    transition: all 0.3s ease-in;
-    overflow-y: hidden;
-    top: 50px;
-    left: 0px;
+
+  .nav-links {
+    margin-left: 40px;
   }
-  .nav > .nav-links > a {
-    display: block;
-    width: 100%;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 184%;
-    color: #3D3D3D;
+
+  .logo {
+    margin-top: 0;
   }
-  .nav > #nav-check:not(:checked) ~ .nav-links {
-    height: 0px;
+
+  .navbar-toggle {
+    display: none;
   }
-  .nav > #nav-check:checked ~ .nav-links {
-    height: calc(100vh - 50px);
-    overflow-y: auto;
-  }
+
+.navbtn:hover {
+    background: #FFFFFF;
+    border: 3px solid #080F4D;
+    color: #080F4D;
+    transition: background 500ms ease-in-out;
+}
+
 }
 </style>

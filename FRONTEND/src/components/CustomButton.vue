@@ -1,6 +1,6 @@
 <template>
   <div class="btn-box">
-    <button @click="$emit('click')">
+    <button type="submit" @click="$emit('click')" :disabled="disabled">
       <span>{{ text }}</span
       >&rarr;
     </button>
@@ -9,8 +9,8 @@
 
 <script>
 export default {
-  name: "Custom Button",
-  props: ["text"]
+  name: "CustomButton",
+  props: ["text", "disabled"]
 };
 </script>
 
@@ -29,6 +29,10 @@ export default {
   padding: 2rem;
   border: none;
   margin: 0 auto;
+}
+
+.btn-box button:disabled {
+  opacity: 0.6;
 }
 
 .btn-box button span {
