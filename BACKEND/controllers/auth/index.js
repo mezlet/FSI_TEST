@@ -14,6 +14,9 @@ export default class Authenticaion {
             const password_hash = await auth.hash(password);
             const payload = [firstname, lastname, phone_number, address, password_hash];
             const user  = await db(Queries.createUser, payload);
+            if (user && user.routine === '_bt_check_unique') {
+                return Response.badrequestError(res, 'User Already Exist.');
+            }
             if(user && user.rows[0].id){
                 const token = await auth.generateToken(user.rows[0].id);
                 user.rows[0].token = token;
@@ -66,6 +69,7 @@ export default class Authenticaion {
                 const token = req.headers['authorization'];
                 const decoded = auth.decodeToken(token);
                 const { PhoneNumber, FirstName, LastName } = JSON.parse(result).data;
+                console.log(JSON.parse(result).data);
                 const user = await db(Queries.getUser, [decoded.userId]);
                 if(user && !user.rows.length > 0){
                     return res.status(404).json({'success': false, 'error': 'Error verifying user.'});
