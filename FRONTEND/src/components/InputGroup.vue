@@ -75,4 +75,10 @@ export default {
     top: 6px;
   }
 }
+@media screen and (max-width: 800px) {
+  .input-group {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
 </style>
