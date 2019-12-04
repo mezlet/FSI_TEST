@@ -80,7 +80,7 @@ main {
 }
 
 .update {
-  margin: 0 10rem;
+  margin: 0 10rem 8rem;
 }
 
 .update p {
