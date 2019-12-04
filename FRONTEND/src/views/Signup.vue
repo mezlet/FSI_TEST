@@ -1,6 +1,6 @@
 <template>
   <div class="signup">
-    <h1>Sign Up</h1>
+    <h1 class="heading-1">Sign Up</h1>
     <p>
       Over 25,000 businesses of all sizes use Wentworths to accept payments
       online, <br />including some of Nigeria's biggest brands
@@ -72,7 +72,13 @@ export default {
 
 <style scoped>
 .signup {
+  margin: 0 10rem;
   margin-bottom: 8rem;
+}
+
+.signup p {
+  font-size: 1.6rem;
+  color: #3d3d3d;
 }
 form {
   width: 100%;
@@ -87,6 +93,12 @@ form {
 @media screen and (max-width: 800px) {
   .input-group {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .signup {
+    margin: 0 5rem;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="update">
-    <h1>Update Details</h1>
+    <h1 class="heading-1">Update Details</h1>
     <p>
       The BVN gives each Bank customer a unique identity across the Nigerian
       Banking industry that can <br />
@@ -79,6 +79,15 @@ main {
   justify-content: space-between;
 }
 
+.update {
+  margin: 0 10rem;
+}
+
+.update p {
+  font-size: 1.6rem;
+  color: #3d3d3d;
+}
+
 .input-group,
 .btn-box {
   margin-top: 4rem;
@@ -137,6 +146,12 @@ main > * {
 
   .info {
     margin-top: 10rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .update {
+    margin: 0 5rem;
   }
 }
 </style>

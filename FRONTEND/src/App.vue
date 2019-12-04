@@ -15,10 +15,6 @@ export default {
 </script>
 
 <style>
-#app {
-  margin: 0 10rem;
-}
-
 #nav {
   padding: 30px;
 }
@@ -30,11 +26,5 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
-
-@media screen and (max-width: 750px) {
-  #app {
-    margin: 0 5rem;
-  }
 }
 </style>

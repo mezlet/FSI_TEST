@@ -16,17 +16,12 @@ body {
   box-sizing: border-box;
 }
 
-h1 {
+.heading-1 {
   color: #080F4D;
   font-weight: bold;
   font-size: 8rem;
   line-height: 184%;
   margin: 2rem 0;
-}
-
-p {
-  font-size: 1.6rem;
-  color: #3D3D3D
 }
 
 .btn-box {
@@ -55,7 +50,7 @@ p {
     font-size: 35%;
   }
 
-  h1 {
+  .heading-1 {
     font-size: 6rem;
   }
 }
