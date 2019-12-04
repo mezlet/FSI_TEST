@@ -10,44 +10,118 @@
         type="text"
         name="fname"
         text="First Name"
-        v-model="form.firstname"
-      />
+        v-model.lazy="$v.form.firstName.$model"
+        :error="$v.form.firstName.$anyError"
+      >
+        <template v-slot:errors>
+          <p
+            class="error"
+            v-if="$v.form.firstName.$dirty && !$v.form.firstName.required"
+          >
+            *This field is required
+          </p>
+        </template>
+      </input-group>
+
       <input-group
         type="text"
         name="lastname"
-        v-model="form.lastname"
+        v-model="$v.form.lastName.$model"
+        :error="$v.form.lastName.$anyError"
         text="Last Name"
-      />
+      >
+        <template v-slot:errors>
+          <p
+            class="error"
+            v-if="$v.form.lastName.$dirty && !$v.form.lastName.required"
+          >
+            *This field is required
+          </p>
+        </template>
+      </input-group>
       <input-group
         type="text"
         name="phoneNo"
-        v-model="form.phoneNumber"
+        v-model="$v.form.phoneNumber.$model"
+        :error="$v.form.phoneNumber.$anyError"
         text="Phone Number"
-      />
+        ><template v-slot:errors>
+          <p
+            class="error"
+            v-if="$v.form.phoneNumber.$dirty && !$v.form.phoneNumber.required"
+          >
+            *This field is required
+          </p>
+        </template>
+      </input-group>
+
       <input-group
         type="text"
         name="address"
-        v-model="form.address"
+        v-model="$v.form.address.$model"
+        :error="$v.form.address.$anyError"
         text="Address"
-      />
+      >
+        <template v-slot:errors>
+          <p
+            class="error"
+            v-if="$v.form.address.$dirty && !$v.form.address.required"
+          >
+            *This field is required
+          </p>
+        </template>
+      </input-group>
       <input-group
         type="password"
         name="password"
-        v-model="form.password"
+        :error="$v.form.password.$anyError"
+        v-model="$v.form.password.$model"
         text="Password"
-      />
+      >
+        <template v-slot:errors>
+          <p
+            class="error"
+            v-if="$v.form.password.$dirty && !$v.form.password.required"
+          >
+            *This field is required
+          </p>
+        </template>
+      </input-group>
       <input-group
-        type="text"
+        type="password"
         name="confirm-password"
-        v-model="form.confirmPassword"
+        v-model="$v.form.confirmPassword.$model"
+        :error="$v.form.confirmPassword.$anyError"
         text="Confirm password"
-      />
-      <custom-button text="Signup" />
+      >
+        <template v-slot:errors>
+          <p
+            class="error"
+            v-if="
+              $v.form.confirmPassword.$dirty &&
+                !$v.form.confirmPassword.required
+            "
+          >
+            *This field is required
+          </p>
+          <p
+            class="error"
+            v-if="
+              $v.form.confirmPassword.$dirty &&
+                !$v.form.confirmPassword.sameAsPassword
+            "
+          >
+            *Passwords must match!
+          </p>
+        </template>
+      </input-group>
+      <custom-button text="Signup" :disabled="$v.form.$invalid" />
     </form>
   </div>
 </template>
 
 <script>
+import { required, sameAs } from "vuelidate/lib/validators";
 import InputGroup from "@/components/InputGroup";
 import CustomButton from "@/components/CustomButton";
 
@@ -59,14 +133,37 @@ export default {
   },
   data: () => ({
     form: {
-      firstName: "Ore Somt",
+      firstName: "",
       lastName: "Ore Somt",
       phoneNumber: "",
       password: "",
       confirmPassword: "",
       address: ""
     }
-  })
+  }),
+  validations: {
+    form: {
+      firstName: {
+        required
+      },
+      lastName: {
+        required
+      },
+      phoneNumber: {
+        required
+      },
+      address: {
+        required
+      },
+      password: {
+        required
+      },
+      confirmPassword: {
+        required,
+        sameAsPassword: sameAs("password")
+      }
+    }
+  }
 };
 </script>
 
@@ -86,12 +183,12 @@ form {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.input-group {
+.input-wrapper {
   width: 47%;
 }
 
 @media screen and (max-width: 800px) {
-  .input-group {
+  .input-wrapper {
     width: 100%;
   }
 }
