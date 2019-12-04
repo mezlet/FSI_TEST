@@ -352,6 +352,7 @@
 .gallery-button {
     width: 187px;
     height: 59px;
+    font-size: 16px;
     background: #FF4B35;
     border-radius: 4px;
     border: none;
@@ -502,6 +503,7 @@
  .list-button {
     width: 187px;
     height: 59px;
+    font-size: 16px;
     background: #FF4B35;
     border-radius: 4px;
     border: none;
