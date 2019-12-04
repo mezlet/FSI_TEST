@@ -23,9 +23,7 @@
           v-model="form.dob"
         />
 
-        <div class="btn-box">
-          <button><span>Update</span>&rarr;</button>
-        </div>
+        <custom-button text="Update" />
 
         <input-group
           class="status"
@@ -52,10 +50,12 @@
 
 <script>
 import InputGroup from "@/components/InputGroup";
+import CustomButton from "@/components/CustomButton";
 export default {
   name: "UpdateDetails",
   components: {
-    InputGroup
+    InputGroup,
+    CustomButton
   },
   data: () => ({
     details: {

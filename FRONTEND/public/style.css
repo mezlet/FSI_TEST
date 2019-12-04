@@ -24,26 +24,6 @@ body {
   margin: 2rem 0;
 }
 
-.btn-box {
-  width: 100%;
-  margin-top: 6rem;
-  text-align: center;
-}
-
-.btn-box button {
-  background: #ff4b35;
-  color: white;
-  font-size: 1.6rem;
-  border-radius: 4px;
-  padding: 2rem;
-  border: none;
-  margin: 0 auto;
-}
-
-.btn-box button span {
-  display: inline-block;
-  margin-right: 20rem;
-}
 
 @media screen and (max-width: 750px) {
   html {

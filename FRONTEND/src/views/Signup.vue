@@ -42,20 +42,20 @@
         v-model="form.confirmPassword"
         text="Confirm password"
       />
-      <div class="btn-box">
-        <button><span>Signup</span>&rarr;</button>
-      </div>
+      <custom-button text="Signup" />
     </form>
   </div>
 </template>
 
 <script>
 import InputGroup from "@/components/InputGroup";
+import CustomButton from "@/components/CustomButton";
 
 export default {
   name: "Signup",
   components: {
-    InputGroup
+    InputGroup,
+    CustomButton
   },
   data: () => ({
     form: {
