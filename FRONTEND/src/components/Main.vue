@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="main-body">
         <!-- Stack the columns on mobile by making one full-width and the other half-width -->
         <div class="intro">
             <div class="left">
@@ -121,7 +121,7 @@
             </div>
         </div>
 
-        <div class="comment" data-aos="slide-up" data-aos-duration="1000">
+        <div class="comment" data-aos="slide-up" data-aos-duration="1500">
             <div class="comment-header">
                 <img src="../assets/comma.svg" alt="comma">
             </div>
@@ -156,7 +156,7 @@
 </template>
 
 <style scoped>
-.main{
+.main-body{
     margin-bottom: 5%;
 }
 .intro {
@@ -178,10 +178,11 @@
     color: #080F4D;
 }
 .header-red {
+    margin: 0;
     font-style: normal;
     font-weight: bold;
     font-size: 74.625px;
-    line-height: 110%;
+    /* line-height: 110%; */
     color: #FF4B35;
 }
 .header-text{

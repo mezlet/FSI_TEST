@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <Navbar />
     <Main />
     <Footer />
   </div>
@@ -8,14 +7,12 @@
 
 <script>
 // @ is an alias to /src
-import Navbar from "@/components/Navbar.vue";
 import Main from "@/components/Main.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
   name: "home",
   components: {
-    Navbar,
     Main,
     Footer
   }
@@ -27,7 +24,9 @@ export default {
   margin: 0 auto;
   overflow: hidden;
 }
-
+p, h1{
+  color: #ffffff;
+}
 @media only screen 
   and (min-width: 320px) 
   and (max-width: 480px)
