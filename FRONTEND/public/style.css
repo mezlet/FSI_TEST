@@ -34,3 +34,8 @@ body {
     font-size: 6rem;
   }
 }
+
+.toasted-container .toasted .action {
+  font-size: 1.5rem !important;
+  color: white
+}

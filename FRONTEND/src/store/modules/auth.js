@@ -1,0 +1,43 @@
+import axios from "@/utils/axios";
+
+export default {
+  state: {
+    isLoggedIn: false,
+    user: {},
+    loading: false,
+    error: null
+  },
+  mutations: {
+    setUser: (state, data) => {
+      state.user = data;
+    },
+    setIsLoggedIn: (state, bool) => {
+      state.isLoggedIn = bool;
+    },
+    setLoading: (state, bool) => {
+      state.loading = bool;
+    },
+    setError: (state, error) => {
+      state.error = error;
+    }
+  },
+  actions: {
+    registerUser: async ({ commit }, userInfo) => {
+      commit("setLoading", true);
+      try {
+        const { data } = await axios.post("auth/signup", userInfo);
+        console.log(data);
+        commit("setUser", data.data);
+        commit("setIsLoggedIn", true);
+        commit("setLoading", false);
+      } catch (error) {
+        console.log(error, error.response);
+        commit(
+          "setError",
+          error.response.data ? error.response.data.message : error.message
+        );
+      }
+    }
+  },
+  modules: {}
+};
