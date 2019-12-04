@@ -1,6 +1,6 @@
 <template>
   <div class="btn-box">
-    <button>
+    <button @click="$emit('click')">
       <span>{{ text }}</span
       >&rarr;
     </button>
