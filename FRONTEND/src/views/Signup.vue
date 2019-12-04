@@ -91,6 +91,10 @@ form {
 }
 
 @media screen and (max-width: 800px) {
+  .signup{
+    width: 90%;
+    margin: 0 auto;
+  }
   .input-group {
     width: 100%;
   }

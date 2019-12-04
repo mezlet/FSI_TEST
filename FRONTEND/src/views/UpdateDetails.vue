@@ -138,6 +138,7 @@ main > * {
 @media screen and (max-width: 900px) {
   main > * {
     width: 100%;
+    margin: 0 5rem;
   }
 
   .input-group.status {
