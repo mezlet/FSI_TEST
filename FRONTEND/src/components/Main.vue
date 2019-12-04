@@ -121,7 +121,7 @@
             </div>
         </div>
 
-        <div class="comment" data-aos="slide-up" data-aos-duration="1500">
+        <div class="comment" data-aos="slide-up" data-aos-duration="800">
             <div class="comment-header">
                 <img src="../assets/comma.svg" alt="comma">
             </div>
@@ -168,7 +168,7 @@
     grid-gap: 5%;
 }
 .left {
-    margin-top: 70px;
+    margin-top: 65px;
 }
 .header-blue {
     font-style: normal;
@@ -182,7 +182,6 @@
     font-style: normal;
     font-weight: bold;
     font-size: 74.625px;
-    /* line-height: 110%; */
     color: #FF4B35;
 }
 .header-text{
@@ -260,7 +259,7 @@
     grid-gap: 30px;
 }
 .wordings{
-    margin-top: 2%;
+    margin-top: 1.5%;
 }
 .wordings h1{
     font-weight: 600;
@@ -521,6 +520,64 @@
   100% { transform: translateY(10px)}
 }
 @media only screen 
+  and (max-width : 991.5px){
+  .intro {
+    width: 90%;
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+  }
+  .left{
+      width: 100%;
+      margin-top: 0px;
+  }
+  .right {
+      display: none;
+  }
+  .display{
+    width: 100%;
+    margin-top: 17%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+.panel{
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    margin-top: 4%;
+    grid-template-columns: 1fr;
+}
+.panel-right{
+    margin-top: 10%;
+}
+.wordings{
+    margin-top: 0%;
+}
+.gallery {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    margin-top: 0%;
+    margin-bottom: 5%;
+    grid-template-columns: 1fr;
+    grid-gap: 5%;
+}
+.gallery-right{
+    grid-gap: 0%;
+    grid-row-gap: 4%;
+}
+.list {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+.list-top{
+    margin-top: 40px;
+    width: 100%;
+}
+}
+@media only screen 
   and (min-width: 320px) 
   and (max-width: 480px)
   {
@@ -546,6 +603,7 @@
 }
 .header-blue, .header-red  {
     font-size: 40px;
+     z-index: 1;
 }
 .btn-red, .btn-blue{
     width: 150px;
