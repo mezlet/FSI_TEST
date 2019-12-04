@@ -49,6 +49,16 @@ export default {
 .input-icon {
   position: absolute;
   right: 15px;
-  top: 9px;
+  top: 11px;
+}
+
+@media screen and (max-width: 750px) {
+  #app {
+    margin: 0 5rem;
+  }
+
+  .input-icon {
+    top: 6px;
+  }
 }
 </style>

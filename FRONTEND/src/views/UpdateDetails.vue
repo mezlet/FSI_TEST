@@ -131,8 +131,12 @@ main > * {
     width: 100%;
   }
 
+  .input-group.status {
+    margin-top: 10rem;
+  }
+
   .info {
-    margin-top: 4rem;
+    margin-top: 10rem;
   }
 }
 </style>
