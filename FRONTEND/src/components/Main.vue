@@ -182,7 +182,6 @@
     font-style: normal;
     font-weight: bold;
     font-size: 74.625px;
-    /* line-height: 110%; */
     color: #FF4B35;
 }
 .header-text{
@@ -546,6 +545,7 @@
 }
 .header-blue, .header-red  {
     font-size: 40px;
+     z-index: 1;
 }
 .btn-red, .btn-blue{
     width: 150px;
