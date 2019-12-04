@@ -8,6 +8,7 @@
                     <a href="#" class="logo"><img src="../assets/Logo.svg" alt="logo"><span>WENTWORTHS</span></a>
                 </router-link>
                 <input type="checkbox" id="chkToggle">
+
                 <ul class="main-nav" id="js-menu">
                 <li>
                     <a href="#" class="nav-links">ABOUT</a>
@@ -41,6 +42,7 @@
 .main-nav {
   list-style-type: none;
   display: none;
+   padding: 0;
 }
 .logo {
 font-style: normal;
@@ -120,10 +122,11 @@ color: #3D3D3D;
 
   #chkToggle:checked + ul.main-nav {
     display: flex;
+    justify-content: center;
+    align-self: center;
   }
-
+  
   .main-nav {
-    display: flex;
     display: grid;
     grid-template-columns: 0.6fr 0.6fr 0.6fr;
     justify-content: center;

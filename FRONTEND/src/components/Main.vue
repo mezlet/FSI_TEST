@@ -553,6 +553,7 @@
 }
 .wordings{
     margin-top: 0%;
+    width: 100%;
 }
 .gallery {
     width: 90%;
@@ -601,12 +602,18 @@
     grid-template-columns: 1fr;
     grid-gap: 10px;
 }
+.video {
+    width: 100%;
+}
+.video img {
+    width: 100%;
+}
 .header-blue, .header-red  {
     font-size: 40px;
      z-index: 1;
 }
 .btn-red, .btn-blue{
-    width: 150px;
+    width: 140px;
     height: 58px;
 }
 .panel{
