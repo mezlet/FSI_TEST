@@ -1,10 +1,10 @@
 <template>
     <div class="top">
         <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#"><img src="../assets/Logo.svg" alt="logo"><span>WENTWORTHS</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <a class="navbar-brand" href="#"><img src="../assets/Logo.svg" alt="logo"><span>WENTWORTHS</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-4">
@@ -30,12 +30,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.navbar {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
 .navbar-brand {
     font-style: normal;
     font-weight: bold;
@@ -58,9 +52,13 @@
     font-size: 16px;
     line-height: 184%;
     color: #3D3D3D;
+    transition: hover 200ms ease-in-out;
+}
+.nav-link:hover{
+    text-decoration: underline;
 }
 
-.btn{
+.btn {
     width: 189px;
     height: 58px;
     background: #080F4D;
@@ -70,6 +68,7 @@
     line-height: 184%;
     color: #FFFFFF;
     border: none;
+    outline: none;
 }
 
 .btn:hover {
@@ -78,4 +77,25 @@
     color: #080F4D;
     transition: background 500ms ease-in-out;
 }
+
+@media only screen 
+  and (min-width: 320px) 
+  and (max-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+.top {
+    width: 100%;
+    margin: 10 auto;
+}
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .btn {
+    width: 150px;
+    height: 50px;
+}
+
+}
+
 </style>
