@@ -13,17 +13,31 @@
           type="text"
           name="verify-bvn"
           text="Verify Bvn"
-          v-model="form.bvn"
-        />
+          v-model="$v.form.bvn.$model"
+          :error="$v.form.bvn.$anyError"
+        >
+          <template v-slot:errors>
+            <p class="error" v-if="$v.form.bvn.$dirty && !$v.form.bvn.required">
+              *This field is required
+            </p>
+          </template>
+        </input-group>
 
         <input-group
           type="date"
           name="dob"
           text="Date of birth"
-          v-model="form.dob"
-        />
+          :error="$v.form.dob.$anyError"
+          v-model="$v.form.dob.$model"
+        >
+          <template v-slot:errors>
+            <p class="error" v-if="$v.form.dob.$dirty && !$v.form.dob.required">
+              *This field is required
+            </p>
+          </template>
+        </input-group>
 
-        <custom-button text="Update" />
+        <custom-button text="Update" :disabled="$v.form.$invalid" />
 
         <input-group
           class="status"
@@ -49,6 +63,7 @@
 </template>
 
 <script>
+import { required } from "vuelidate/lib/validators";
 import InputGroup from "@/components/InputGroup";
 import CustomButton from "@/components/CustomButton";
 export default {
@@ -68,7 +83,17 @@ export default {
       dob: "",
       verify: ""
     }
-  })
+  }),
+  validations: {
+    form: {
+      bvn: {
+        required
+      },
+      dob: {
+        required
+      }
+    }
+  }
 };
 </script>
 
