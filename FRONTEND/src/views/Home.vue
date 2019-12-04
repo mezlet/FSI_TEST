@@ -24,14 +24,12 @@ export default {
   margin: 0 auto;
   overflow: hidden;
 }
-p, h1{
+p,
+h1 {
   color: #ffffff;
 }
-@media only screen 
-  and (min-width: 320px) 
-  and (max-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-  .home{
+@media only screen and (min-width: 320px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  .home {
     margin: 0;
   }
 }
