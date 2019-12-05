@@ -43,14 +43,14 @@
           :disabled="$v.form.$invalid"
         />
 
-        <input-group
+        <!-- <input-group
           class="status"
           type="text"
           name="verify-bvn"
           text="Verify Bvn"
           v-model="form.bvn"
           :icon="bvnMatch ? 'good' : 'bad'"
-        />
+        /> -->
       </form>
       <section class="info" v-if="show">
         <div v-if="bvnMatch" class="heading">
@@ -67,7 +67,7 @@
             <p class="value">{{ user.lastname }}</p>
           </div>
           <div class="more">
-            <p class="title">Date of Birth</p>
+            <p class="title">Phone Number</p>
             <p class="value">{{ user.phone_number }}</p>
           </div>
         </div>
