@@ -37,14 +37,21 @@ const options = {
 } 
 
 const Reset = () =>{
-    return rp(options, (err, res, body)=>{
-        if(!err){
-            password = res.headers.password;
-            ivkey = res.headers.ivkey;
-            aes_key = res.headers.aes_key;
-                }
-            return 'Could not connect to server';
-    });   
+    try{
+
+        return rp(options, (err, res, body)=>{
+            if(!err){
+                password = res.headers.password;
+                ivkey = res.headers.ivkey;
+                aes_key = res.headers.aes_key;
+                    }
+        });  
+    }catch(error){
+    
+    res.status(500).json({'success': false, 'message': 'Connection Error'})
+    }
+
+     
 }
 routes(app, password, ivkey, aes_key);
 
