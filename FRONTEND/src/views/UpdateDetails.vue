@@ -94,6 +94,11 @@ export default {
       }
     }
   },
+  computed: {
+    user() {
+      return this.$store.state.token;
+    }
+  },
   methods: {
     async submitBvn() {
       await this.$store.dispatch("checkBvn", {
@@ -103,10 +108,10 @@ export default {
           .reverse()
           .join("")
       });
-      if (this.$store.state.auth.bvnMatch) {
+      if (this.$store.state.bvnMatch) {
         this.$toasted.success("BVN Matched!");
       } else {
-        this.$toasted.error(this.$store.state.auth.error);
+        this.$toasted.error(this.$store.state.error);
       }
     }
   }

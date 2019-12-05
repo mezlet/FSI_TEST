@@ -3,6 +3,7 @@ import axios from "@/utils/axios";
 export default {
   state: {
     isLoggedIn: false,
+    token: null,
     user: {},
     loading: false,
     error: null,
@@ -12,6 +13,9 @@ export default {
   mutations: {
     setUser: (state, data) => {
       state.user = data;
+    },
+    setToken: (state, data) => {
+      state.token = data;
     },
     setIsLoggedIn: (state, bool) => {
       state.isLoggedIn = bool;
@@ -34,22 +38,24 @@ export default {
       commit("setLoading", true);
       try {
         const { data } = await axios.post("auth/signup", userInfo);
+        console.log(data);
         commit("setUser", data.data);
+        commit("setToken", data.data.token);
         commit("setIsLoggedIn", true);
         commit("setLoading", false);
       } catch (error) {
+        console.log(error);
         commit(
           "setError",
           error.response.data ? error.response.data.message : error.message
         );
       }
     },
-    checkBvn: async ({ commit }, bvnInfo) => {
+    checkBvn: async ({ commit, state }, bvnInfo) => {
       commit("setBvnLoading", true);
       const opts = {
         headers: {
-          Authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjY4LCJpYXQiOjE1NzU1NDAxOTYsImV4cCI6MTU3NTU0Mzc5Nn0.niJI19oJJIJYM3hUXuICCYv0beEvycm6lG3zaaGLpv8"
+          Authorization: state.token
         }
       };
       console.log(bvnInfo, opts);
