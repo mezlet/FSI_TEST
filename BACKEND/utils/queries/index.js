@@ -19,5 +19,5 @@ SET bvn=$2, dob=$3
 WHERE 
 phone_number=$1
 RETURNING
-id, firstname, lastname, phone_number
+id, firstname, lastname, phone_number, dob
 `;

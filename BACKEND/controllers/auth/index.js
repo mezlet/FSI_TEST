@@ -36,13 +36,14 @@ export default class Authenticaion {
     await rp.post(options, async(err, response, body)=>{
             const result = auth.decrypt(body);
             if(JSON.parse(result).message){
-                const { PhoneNumber, FirstName, LastName } = JSON.parse(result).data;
+                const { PhoneNumber, FirstName, LastName, DateOfBirth } = JSON.parse(result).data;
                 if(firstname === FirstName && lastname === LastName && phone_number === PhoneNumber ){
-                    const update = await db(Queries.updateUser, [PhoneNumber, bvn, dob]);
-                    return (update&&update.rows[0]) ? res.status(200).json({'success': true, 'message': 'BVN matched'})
+                    const update = await db(Queries.updateUser, [PhoneNumber, bvn, DateOfBirth]);
+                    return (update&&update.rows[0]) ?
+                     res.status(200).json({'success': true, 'message': 'BVN matched', data: update.rows[0]})
                     : Response.serverError(res, 'Error updating user data');
                 }
-                return res.status(400).json({'success': false, 'message': 'BVN Mismatch'});
+                return res.status(400).json({'success': false, 'message': 'BVN Mismatch', });
             }
             return Response.badrequestError(res, 'Invalid BVN');
         })
