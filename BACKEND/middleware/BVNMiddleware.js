@@ -14,9 +14,7 @@ if(!req.headers['authorization']) Response.badrequestError(res, 'Please provide 
       if(!decoded){
         return Response.serverError(res, 'Error decoding token')
       }
-
       const user = await db(Queries.getUser, [decoded.userId]);
-      console.log(user);
       if(!user && !user.rows > 0){
         return Response.badrequestError(res, 'Invalid token')
       }
@@ -28,7 +26,7 @@ if(!req.headers['authorization']) Response.badrequestError(res, 'Please provide 
      return  next();
 
     } catch (error) {
-      return Response.serverError(res, error);
+      return Response.serverError(res, error.message || 'Something went wrong.');
     }
   }
 

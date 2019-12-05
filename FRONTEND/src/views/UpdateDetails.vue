@@ -79,8 +79,8 @@ export default {
       "date of birth": "12/08/2019"
     },
     form: {
-      bvn: "2343555555",
-      dob: "2019-08-01",
+      bvn: "12345678901",
+      dob: "2019-01-23",
       verify: ""
     }
   }),
@@ -99,10 +99,9 @@ export default {
       await this.$store.dispatch("checkBvn", {
         bvn: this.form.bvn,
         dob: this.form.dob
-          .split("")
+          .split("-")
           .reverse()
           .join("")
-          .replace(/-/g, "")
       });
       if (this.$store.state.auth.bvnMatch) {
         this.$toasted.success("BVN Matched!");

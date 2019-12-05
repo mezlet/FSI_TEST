@@ -42,7 +42,7 @@ export default class Authenticaion {
                     return (update&&update.rows[0]) ? Response.successResponse(res, 'BVN Matched.')
                     : Response.serverError(res, 'Error updating user data');
                 }
-                return res.status(400).json({'success': false, 'error': 'BVN Mismatch'});
+                return res.status(400).json({'success': false, 'message': 'BVN Mismatch'});
             }
             return Response.badrequestError(res, 'Invalid BVN');
         })    

@@ -49,7 +49,7 @@ export default {
       const opts = {
         headers: {
           Authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTU3NTQ3NDI3NiwiZXhwIjoxNTc1NDc3ODc2fQ.VyXZWK7fuYlc1a7qjED4DlcYnhIxHQXA5mWGJyYzuEw"
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjY4LCJpYXQiOjE1NzU1NDAxOTYsImV4cCI6MTU3NTU0Mzc5Nn0.niJI19oJJIJYM3hUXuICCYv0beEvycm6lG3zaaGLpv8"
         }
       };
       console.log(bvnInfo, opts);
@@ -59,7 +59,7 @@ export default {
         commit("setBvnMatch", true);
         commit("setBvnLoading", true);
       } catch (error) {
-        console.log(error);
+        console.log(error.response);
         commit(
           "setError",
           error.response.data ? error.response.data.message : error.message
