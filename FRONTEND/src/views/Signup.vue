@@ -145,12 +145,12 @@ export default {
   },
   data: () => ({
     form: {
-      firstName: "0re Somti",
-      lastName: "Ore Somti",
-      phoneNumber: "090789235",
-      password: "prettypretty",
-      confirmPassword: "prettypretty",
-      address: "Home"
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+      address: ""
     },
     snack: true
   }),

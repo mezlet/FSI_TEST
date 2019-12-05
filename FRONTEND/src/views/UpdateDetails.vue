@@ -83,8 +83,8 @@ export default {
       "date of birth": "12/08/2019"
     },
     form: {
-      bvn: "12345678901",
-      dob: "2019-01-23",
+      bvn: "",
+      dob: "",
       verify: ""
     }
   }),
