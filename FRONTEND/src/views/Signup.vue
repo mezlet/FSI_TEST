@@ -122,7 +122,11 @@
           </p>
         </template>
       </input-group>
-      <custom-button text="Signup" :disabled="$v.form.$invalid" />
+      <custom-button
+        text="Signup"
+        :disabled="$v.form.$invalid"
+        :loading="loading"
+      />
     </form>
   </div>
 </template>
@@ -141,12 +145,12 @@ export default {
   },
   data: () => ({
     form: {
-      firstName: "0re Somti",
-      lastName: "Ore Somti",
-      phoneNumber: "090789235",
-      password: "prettypretty",
-      confirmPassword: "prettypretty",
-      address: "Home"
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+      address: ""
     },
     snack: true
   }),
@@ -176,7 +180,10 @@ export default {
   },
   computed: {
     isLoggedIn() {
-      return this.$store.state.auth.isLoggedIn;
+      return this.$store.state.isLoggedIn;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   },
   methods: {
@@ -188,10 +195,14 @@ export default {
         address: this.form.address,
         phone_number: this.form.phoneNumber
       });
-      if (this.$store.state.auth.isLoggedIn) {
+      console.log(this.$store.state.isLoggedIn);
+      if (this.$store.state.isLoggedIn) {
         this.$toasted.success("Logged In sucessfully", { type: "sucess" });
+        setTimeout(() => {
+          this.$router.push("/update");
+        });
       } else {
-        this.$toasted.error(this.$store.state.auth.error, { type: "sucess" });
+        this.$toasted.error(this.$store.state.error, { type: "sucess" });
       }
     }
   }

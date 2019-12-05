@@ -8,7 +8,7 @@
       operations
     </p>
     <main>
-      <form action="">
+      <form @submit.prevent="submitBvn" action="">
         <input-group
           type="text"
           name="verify-bvn"
@@ -37,7 +37,11 @@
           </template>
         </input-group>
 
-        <custom-button text="Update" :disabled="$v.form.$invalid" />
+        <custom-button
+          :loading="loading"
+          text="Update"
+          :disabled="$v.form.$invalid"
+        />
 
         <input-group
           class="status"
@@ -91,6 +95,27 @@ export default {
       },
       dob: {
         required
+      }
+    }
+  },
+  computed: {
+    loading() {
+      return this.$store.state.bvnLoading;
+    }
+  },
+  methods: {
+    async submitBvn() {
+      await this.$store.dispatch("checkBvn", {
+        bvn: this.form.bvn,
+        dob: this.form.dob
+          .split("-")
+          .reverse()
+          .join("")
+      });
+      if (this.$store.state.bvnMatch) {
+        this.$toasted.success("BVN Matched!");
+      } else {
+        this.$toasted.error(this.$store.state.error);
       }
     }
   }
