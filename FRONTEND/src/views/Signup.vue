@@ -5,7 +5,7 @@
       Over 25,000 businesses of all sizes use Wentworths to accept payments
       online, <br />including some of Nigeria's biggest brands
     </p>
-    <form action="">
+    <form @submit.prevent="submitForm" action="">
       <input-group
         type="text"
         name="fname"
@@ -25,7 +25,7 @@
 
       <input-group
         type="text"
-        name="lastname"
+        name="password"
         v-model="$v.form.lastName.$model"
         :error="$v.form.lastName.$anyError"
         text="Last Name"
@@ -85,6 +85,13 @@
           >
             *This field is required
           </p>
+          <p
+            class="error"
+            v-if="$v.form.password.$dirty && !$v.form.password.minLength"
+          >
+            Password must have at least
+            {{ $v.form.password.$params.minLength.min }} characters.
+          </p>
         </template>
       </input-group>
       <input-group
@@ -121,7 +128,8 @@
 </template>
 
 <script>
-import { required, sameAs } from "vuelidate/lib/validators";
+import { required, sameAs, minLength } from "vuelidate/lib/validators";
+// import { VSnackbar } from "vuetify/lib";
 import InputGroup from "@/components/InputGroup";
 import CustomButton from "@/components/CustomButton";
 
@@ -133,13 +141,14 @@ export default {
   },
   data: () => ({
     form: {
-      firstName: "",
-      lastName: "Ore Somt",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
-      address: ""
-    }
+      firstName: "0re Somti",
+      lastName: "Ore Somti",
+      phoneNumber: "090789235",
+      password: "prettypretty",
+      confirmPassword: "prettypretty",
+      address: "Home"
+    },
+    snack: true
   }),
   validations: {
     form: {
@@ -156,11 +165,33 @@ export default {
         required
       },
       password: {
-        required
+        required,
+        minLength: minLength(8)
       },
       confirmPassword: {
         required,
         sameAsPassword: sameAs("password")
+      }
+    }
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.auth.isLoggedIn;
+    }
+  },
+  methods: {
+    async submitForm() {
+      await this.$store.dispatch("registerUser", {
+        firstname: this.form.firstName,
+        lastname: this.form.lastName,
+        password: this.form.password,
+        address: this.form.address,
+        phone_number: this.form.phoneNumber
+      });
+      if (this.$store.state.auth.isLoggedIn) {
+        this.$toasted.success("Logged In sucessfully", { type: "sucess" });
+      } else {
+        this.$toasted.error(this.$store.state.auth.error, { type: "sucess" });
       }
     }
   }
