@@ -24,7 +24,6 @@ const routes = [
     component: UpdateDetails,
     beforeEnter(to, from, next) {
       // ...
-      console.log(store.state.token);
       if (store.state.token) {
         Vue.toasted.show("Please sign up first");
         next();
