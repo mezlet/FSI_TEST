@@ -8,7 +8,7 @@
       operations
     </p>
     <main>
-      <form action="">
+      <form @submit.prevent="submitBvn" action="">
         <input-group
           type="text"
           name="verify-bvn"
@@ -79,8 +79,8 @@ export default {
       "date of birth": "12/08/2019"
     },
     form: {
-      bvn: "",
-      dob: "",
+      bvn: "2343555555",
+      dob: "2019-08-01",
       verify: ""
     }
   }),
@@ -91,6 +91,23 @@ export default {
       },
       dob: {
         required
+      }
+    }
+  },
+  methods: {
+    async submitBvn() {
+      await this.$store.dispatch("checkBvn", {
+        bvn: this.form.bvn,
+        dob: this.form.dob
+          .split("")
+          .reverse()
+          .join("")
+          .replace(/-/g, "")
+      });
+      if (this.$store.state.auth.bvnMatch) {
+        this.$toasted.success("BVN Matched!");
+      } else {
+        this.$toasted.error(this.$store.state.auth.error);
       }
     }
   }

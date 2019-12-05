@@ -19,7 +19,8 @@ exports.up = (pgm) => {
         },
         phone_number: {
             type: 'varchar(255)',
-            notNull: true
+            notNull: true,
+            unique: true
         },
         address: {
             type: 'varchar(255)',
