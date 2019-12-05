@@ -15,12 +15,12 @@
         <li>
           <a href="#" class="nav-links">ABOUT</a>
         </li>
-        <li v-if="isLoggedIn">
+        <li v-if="!isLoggedIn">
           <a href="#" class="nav-links">LOG IN</a>
         </li>
 
         <router-link to="/signup">
-          <li v-if="isLoggedIn">
+          <li v-if="!isLoggedIn">
             <a href="#" class="nav-links"
               ><button type="button" class="navbtn">SIGN UP</button></a
             >
