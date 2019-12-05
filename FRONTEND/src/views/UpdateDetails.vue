@@ -37,7 +37,11 @@
           </template>
         </input-group>
 
-        <custom-button text="Update" :disabled="$v.form.$invalid" />
+        <custom-button
+          :loading="loading"
+          text="Update"
+          :disabled="$v.form.$invalid"
+        />
 
         <input-group
           class="status"
@@ -95,8 +99,8 @@ export default {
     }
   },
   computed: {
-    user() {
-      return this.$store.state.token;
+    loading() {
+      return this.$store.state.bvnLoading;
     }
   },
   methods: {

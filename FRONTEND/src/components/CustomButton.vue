@@ -2,7 +2,7 @@
   <div class="btn-box">
     <button type="submit" @click="$emit('click')" :disabled="disabled">
       <span class="text">{{ text }}</span>
-      <span v-if="loadingin">
+      <span v-if="loading">
         <img src="@/assets/loading2.svg" alt="Loading Icon" />
       </span>
       <span v-else>
@@ -18,7 +18,7 @@ export default {
   props: {
     text: String,
     disabled: Boolean,
-    loadingin: Boolean
+    loading: Boolean
   }
 };
 </script>
