@@ -71,10 +71,12 @@ export default new Vuex.Store({
     checkBvn: async ({ commit }, bvnInfo) => {
       commit("setBvnLoading", true);
       try {
-        await axios.post("auth/bvn", bvnInfo);
+        const data = await axios.post("auth/bvn", bvnInfo);
+        console.log(data);
         commit("setBvnMatch", true);
         commit("setBvnLoading", false);
       } catch (error) {
+        commit("setBvnMatch", false);
         commit("setBvnLoading", false);
         commit(
           "setError",

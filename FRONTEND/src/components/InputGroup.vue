@@ -64,6 +64,8 @@ export default {
   position: absolute;
   right: 15px;
   top: 11px;
+  height: 30px;
+  width: 30px;
 }
 
 @media screen and (max-width: 750px) {

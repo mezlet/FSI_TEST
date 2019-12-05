@@ -49,18 +49,35 @@
           name="verify-bvn"
           text="Verify Bvn"
           v-model="form.bvn"
-          icon="bad"
+          :icon="bvnMatch ? 'good' : 'bad'"
         />
       </form>
-      <section class="info">
-        <div class="heading">
+      <section class="info" v-if="show">
+        <div v-if="bvnMatch" class="heading">
           <img src="@/assets/icons/good.svg" />
           <h2>BVN Updated</h2>
         </div>
-        <div class="more" v-for="(detail, name) in details" :key="name">
-          <p class="title">{{ name }}</p>
-          <p class="value">{{ detail }}</p>
+        <div v-if="bvnMatch" class="">
+          <div class="more">
+            <p class="title">First Name</p>
+            <p class="value">{{ user.firstname }}</p>
+          </div>
+          <div class="more">
+            <p class="title">Last Name</p>
+            <p class="value">{{ user.lastname }}</p>
+          </div>
+          <div class="more">
+            <p class="title">Date of Birth</p>
+            <p class="value">{{ user.phone_number }}</p>
+          </div>
         </div>
+        <div v-else class="heading">
+          <img src="@/assets/icons/bad.svg" />
+          <h2>BVN Not Matched!</h2>
+        </div>
+      </section>
+      <section v-else class="waiting">
+        <h2>Input your bvn</h2>
       </section>
     </main>
   </div>
@@ -82,6 +99,7 @@ export default {
       "first name": "Fadert",
       "date of birth": "12/08/2019"
     },
+    show: false,
     form: {
       bvn: "",
       dob: "",
@@ -101,6 +119,12 @@ export default {
   computed: {
     loading() {
       return this.$store.state.bvnLoading;
+    },
+    bvnMatch() {
+      return this.$store.state.bvnMatch;
+    },
+    user() {
+      return this.$store.state.user;
     }
   },
   methods: {
@@ -112,11 +136,12 @@ export default {
           .reverse()
           .join("")
       });
-      if (this.$store.state.bvnMatch) {
-        this.$toasted.success("BVN Matched!");
-      } else {
-        this.$toasted.error(this.$store.state.error);
-      }
+      this.show = true;
+      // if (this.$store.state.bvnMatch) {
+      //   this.$toasted.success("BVN Matched!");
+      // } else {
+      //   this.$toasted.error(this.$store.state.error);
+      // }
     }
   }
 };
