@@ -8,22 +8,40 @@
       operations
     </p>
     <main>
-      <form action="">
+      <form @submit.prevent="submitBvn" action="">
         <input-group
           type="text"
           name="verify-bvn"
           text="Verify Bvn"
-          v-model="form.bvn"
-        />
+          v-model="$v.form.bvn.$model"
+          :error="$v.form.bvn.$anyError"
+        >
+          <template v-slot:errors>
+            <p class="error" v-if="$v.form.bvn.$dirty && !$v.form.bvn.required">
+              *This field is required
+            </p>
+          </template>
+        </input-group>
 
         <input-group
           type="date"
           name="dob"
           text="Date of birth"
-          v-model="form.dob"
-        />
+          :error="$v.form.dob.$anyError"
+          v-model="$v.form.dob.$model"
+        >
+          <template v-slot:errors>
+            <p class="error" v-if="$v.form.dob.$dirty && !$v.form.dob.required">
+              *This field is required
+            </p>
+          </template>
+        </input-group>
 
-        <custom-button text="Update" />
+        <custom-button
+          :loading="loading"
+          text="Update"
+          :disabled="$v.form.$invalid"
+        />
 
         <input-group
           class="status"
@@ -49,6 +67,7 @@
 </template>
 
 <script>
+import { required } from "vuelidate/lib/validators";
 import InputGroup from "@/components/InputGroup";
 import CustomButton from "@/components/CustomButton";
 export default {
@@ -68,7 +87,38 @@ export default {
       dob: "",
       verify: ""
     }
-  })
+  }),
+  validations: {
+    form: {
+      bvn: {
+        required
+      },
+      dob: {
+        required
+      }
+    }
+  },
+  computed: {
+    loading() {
+      return this.$store.state.bvnLoading;
+    }
+  },
+  methods: {
+    async submitBvn() {
+      await this.$store.dispatch("checkBvn", {
+        bvn: this.form.bvn,
+        dob: this.form.dob
+          .split("-")
+          .reverse()
+          .join("")
+      });
+      if (this.$store.state.bvnMatch) {
+        this.$toasted.success("BVN Matched!");
+      } else {
+        this.$toasted.error(this.$store.state.error);
+      }
+    }
+  }
 };
 </script>
 
@@ -80,7 +130,7 @@ main {
 }
 
 .update {
-  margin: 0 10rem;
+  margin: 0 10rem 8rem;
 }
 
 .update p {

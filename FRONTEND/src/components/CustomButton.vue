@@ -1,16 +1,25 @@
 <template>
   <div class="btn-box">
-    <button @click="$emit('click')">
-      <span>{{ text }}</span
-      >&rarr;
+    <button type="submit" @click="$emit('click')" :disabled="disabled">
+      <span class="text">{{ text }}</span>
+      <span v-if="loading">
+        <img src="@/assets/loading2.svg" alt="Loading Icon" />
+      </span>
+      <span v-else>
+        &rarr;
+      </span>
     </button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Custom Button",
-  props: ["text"]
+  name: "CustomButton",
+  props: {
+    text: String,
+    disabled: Boolean,
+    loading: Boolean
+  }
 };
 </script>
 
@@ -22,6 +31,7 @@ export default {
 }
 
 .btn-box button {
+  cursor: pointer;
   background: #ff4b35;
   color: white;
   font-size: 1.6rem;
@@ -31,7 +41,11 @@ export default {
   margin: 0 auto;
 }
 
-.btn-box button span {
+.btn-box button:disabled {
+  opacity: 0.6;
+}
+
+.btn-box button .text {
   display: inline-block;
   margin-right: 20rem;
 }
