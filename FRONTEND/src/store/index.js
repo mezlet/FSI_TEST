@@ -58,6 +58,7 @@ export default new Vuex.Store({
         commit("setIsLoggedIn", true);
         commit("setLoading", false);
       } catch (error) {
+        console.log(error);
         commit(
           "setError",
           error.response.data ? error.response.data.message : error.message

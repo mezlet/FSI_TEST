@@ -195,6 +195,7 @@ export default {
         address: this.form.address,
         phone_number: this.form.phoneNumber
       });
+      console.log(this.$store.state.isLoggedIn);
       if (this.$store.state.isLoggedIn) {
         this.$toasted.success("Logged In sucessfully", { type: "sucess" });
         setTimeout(() => {

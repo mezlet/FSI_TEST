@@ -19,7 +19,7 @@ const Helpers = {
   },
 
   generateToken(id) {
-    return jwt.sign({ userId: id }, secret, { expiresIn: '1hr' });
+    return jwt.sign({ userId: id }, secret);
   },
 
   decodeToken(token) {

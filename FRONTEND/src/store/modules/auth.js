@@ -34,7 +34,7 @@ export default {
     }
   },
   actions: {
-    registerUser: async ({ commit }, userInfo) => {
+    registerUser: async ({ commit, state }, userInfo) => {
       commit("setLoading", true);
       try {
         const { data } = await axios.post("auth/signup", userInfo);
@@ -44,7 +44,10 @@ export default {
         commit("setIsLoggedIn", true);
         commit("setLoading", false);
       } catch (error) {
-        console.log(error);
+        commit("setIsLoggedIn", false);
+        commit("setLoading", false);
+        console.log("here", state.isLoggedIn);
+        console.log("error", error);
         commit(
           "setError",
           error.response.data ? error.response.data.message : error.message
