@@ -38,6 +38,10 @@ export default {
   margin-top: 6rem;
 }
 
+.input-group:focus {
+  outline-width: 0;
+}
+
 .input-group.error {
   border: 2px solid red;
 }

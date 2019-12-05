@@ -31,6 +31,7 @@ export default {
 }
 
 .btn-box button {
+  outline: none;
   cursor: pointer;
   background: #ff4b35;
   color: white;
