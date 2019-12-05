@@ -17,7 +17,7 @@ export default {
 <style>
 #app {
   /* overflow: hidden; */
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
