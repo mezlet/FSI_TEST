@@ -25,7 +25,6 @@ const routes = [
     beforeEnter(to, from, next) {
       // ...
       if (store.state.token) {
-        Vue.toasted.show("Please sign up first");
         next();
       } else {
         next({ name: "signup" });
