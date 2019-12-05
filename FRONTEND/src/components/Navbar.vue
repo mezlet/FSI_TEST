@@ -37,7 +37,7 @@ export default {
   components: {},
   computed: {
     isLoggedIn() {
-      return this.$store.state.auth.isLoggedIn;
+      return this.$store.state.isLoggedIn;
     }
   }
 };
