@@ -22,6 +22,7 @@ export default {
 }
 
 .btn-box button {
+  cursor: pointer;
   background: #ff4b35;
   color: white;
   font-size: 1.6rem;

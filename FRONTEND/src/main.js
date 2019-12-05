@@ -10,10 +10,10 @@ import "aos/dist/aos.css";
 Vue.use(Toasted, {
   position: "top-center",
   singleton: true,
-  action : {
-    text : 'Close',
-    onClick : (e, toastObject) => {
-        toastObject.goAway(0);
+  action: {
+    text: "Close",
+    onClick: (e, toastObject) => {
+      toastObject.goAway(0);
     }
   }
 });
