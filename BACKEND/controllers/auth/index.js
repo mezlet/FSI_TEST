@@ -37,19 +37,15 @@ export default class Authenticaion {
             const result = auth.decrypt(body);
             if(JSON.parse(result).message){
                 const { PhoneNumber, FirstName, LastName } = JSON.parse(result).data;
-                if(firstname === FirstName && lastname === LastName && phone_number === PhoneNumber ){       
+                if(firstname === FirstName && lastname === LastName && phone_number === PhoneNumber ){
                     const update = await db(Queries.updateUser, [PhoneNumber, bvn, dob]);
-<<<<<<< HEAD
-                    return (update&&update.rows[0]) ? Response.successResponse(res, 'BVN Matched.')
-=======
                     return (update&&update.rows[0]) ? res.status(200).json({'success': true, 'message': 'BVN matched'})
->>>>>>> a606ace9aed2ca7e6ed831a23337345e3910a6d8
                     : Response.serverError(res, 'Error updating user data');
                 }
                 return res.status(400).json({'success': false, 'message': 'BVN Mismatch'});
             }
             return Response.badrequestError(res, 'Invalid BVN');
-        })    
+        })
         }catch(error){return Response.serverError(res, 'Something went wrong')}
     }
 }

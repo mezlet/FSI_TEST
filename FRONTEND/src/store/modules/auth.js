@@ -37,7 +37,7 @@ export default {
     registerUser: async ({ commit, state }, userInfo) => {
       commit("setLoading", true);
       try {
-        const { data } = await axios.post("auth/signup", userInfo);
+        const data = await axios.post("auth/signup", userInfo);
         console.log(data);
         commit("setUser", data.data);
         commit("setToken", data.data.token);
@@ -47,11 +47,8 @@ export default {
         commit("setIsLoggedIn", false);
         commit("setLoading", false);
         console.log("here", state.isLoggedIn);
-        console.log("error", error);
-        commit(
-          "setError",
-          error.response.data ? error.response.data.message : error.message
-        );
+        // console.log("error", error);
+        commit("setError", error.message);
       }
     },
     checkBvn: async ({ commit, state }, bvnInfo) => {

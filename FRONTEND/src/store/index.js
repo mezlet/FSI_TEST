@@ -58,27 +58,29 @@ export default new Vuex.Store({
         commit("setIsLoggedIn", true);
         commit("setLoading", false);
       } catch (error) {
-        console.log(error);
+        commit("setIsLoggedIn", false);
+        commit("setLoading", false);
         commit(
           "setError",
-          error.response.data ? error.response.data.message : error.message
+          error.response && error.response.data
+            ? error.response.data.message
+            : error.message
         );
       }
     },
-    checkBvn: async ({ commit, state }, bvnInfo) => {
-      console.log(state);
+    checkBvn: async ({ commit }, bvnInfo) => {
       commit("setBvnLoading", true);
       try {
-        const { data } = await axios.post("auth/bvn", bvnInfo);
-        console.log(data);
+        await axios.post("auth/bvn", bvnInfo);
         commit("setBvnMatch", true);
         commit("setBvnLoading", false);
       } catch (error) {
         commit("setBvnLoading", false);
-        console.log(error.response);
         commit(
           "setError",
-          error.response.data ? error.response.data.message : error.message
+          error.response && error.response.data
+            ? error.response.data.message
+            : error.message
         );
       }
     }
